@@ -21,7 +21,7 @@ Example: conda create --name DjangoEnv django
 # Install Django Import Export 
 	conda install -c conda-forge django-import-export  
 
-Run following commands:
+# Run following commands:
 	
 	python manage.py migrate
 	python manage.py makemigrations
@@ -30,7 +30,7 @@ To login, create account using command:
 
 	python manage.py createsuperuser
 
-Run website using:
+# Run website:
 
 	python manage.py runserver
 
