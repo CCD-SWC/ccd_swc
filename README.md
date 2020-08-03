@@ -12,28 +12,28 @@ Ensure that you have a Functional Text Editor(Atom,SublimeText,etc.) on your Sys
 
 To use virtual environment for installation of packages and then activate the environment:
 
-	conda create --name environment_name 
-	conda install package_name 
-	conda activate environment_name
+	$ conda create --name environment_name 
+	$ conda install package_name 
+	$ conda activate environment_name
 
 where environment_name is the name of the virtual environment and package_name is the name of the package 
-Example: conda create --name DjangoEnv django 
+Example: $ conda create --name DjangoEnv django 
 
 # Install Django Import Export 
-	conda install -c conda-forge django-import-export  
+	$ conda install -c conda-forge django-import-export  
 
 # Run following commands:
 	
-	python manage.py migrate
-	python manage.py makemigrations
+	$ python manage.py migrate
+	$ python manage.py makemigrations
 
 To login, create account using command:
 
-	python manage.py createsuperuser
+	$ python manage.py createsuperuser
 
 # Run website:
 
-	python manage.py runserver
+	$ python manage.py runserver
 
 
 
