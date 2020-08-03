@@ -30,7 +30,9 @@ To login, create account using command:
 
 	python manage.py createsuperuser
 
+Run website using:
 
+	python manage.py runserver
 
 
 
