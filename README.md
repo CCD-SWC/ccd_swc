@@ -4,7 +4,7 @@ Welcome to the CCD Placement Portal.
 
 Instructions to run the website on a local machine...
 
-Ensure that you have a Functional Text Editor(Atom,SublimeText,etc.) on your System
+Ensure that you have a Functional Text Editor (Atom, Sublime Text, Notepad++ etc.) installed on your System
 
 # Install Anaconda/Miniconda/Python 
 
