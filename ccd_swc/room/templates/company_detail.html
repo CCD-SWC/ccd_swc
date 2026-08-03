@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+{{% block title %}
+  Company Details
+{% endblock %}
+
+{% block body %}
+<style>
+
+  body {
+      background: linear-gradient(45deg, rgb(240,200,215), rgb(200,200,70), rgb(70,250,200), rgb(250,050,200));
+      background-size: 200% 200%;
+      animation: gradient 10s ease infinite;
+    }
+  @keyframes gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+    background-position: 100% 50%;
+    }
+    100% {
+    background-position: 0% 50%;
+    }
+
+    }
+    .jumbotron
+    {
+      padding:8px 15px 15px 15px;
+      margin:30px 20px;
+      text-align:center;
+      border-radius:30px;
+      background-color:rgba(255,255,255,0.35);
+      border:2px solid rgba(0,0,0,0.7);
+      transition:  0.7s ease;
+    }
+    .container-fluid
+    {
+      background-color:transparent;
+    }
+    .row1
+    {
+        margin-left: auto;
+    margin-right: auto;
+       width:45%;
+       background-color:transparent;
+    }
+    .panel-body
+    {
+      margin:0;
+      padding:20px;
+      border-radius:30px;
+      border :5px solid black;
+      text-align:center;
+      font-family: Tahoma, Verdana, Segoe, sans-serif;
+      background-color:rgba(255,255,255,0.40);
+      transition:  0.7s ease;
+    }
+    .panel-body:hover
+    {
+      background-color:rgba(255,255,255,0.80);
+      transition-timing-function: linear;
+      transition:  0.7s ease;
+
+    }
+    .jumbotron:hover
+    {
+      background-color:rgba(255,255,255,0.90);
+      transition-timing-function: linear;
+      transition:  0.7s ease;
+    }
+    .place
+    {
+      font-size:45px;
+      font-weight:bold;
+    }
+    .pla
+    {
+      font-size:35px;
+      font-weight:bold;
+    }
+    h3
+    {
+      font-size:25px;
+    }
+    input
+    {
+      width:250px;
+      margin:5px;
+    }
+    #load
+    {
+      opacity:1;
+    background-color:blue;
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0px;
+    left:0px;
+    z-index:1000;
+    visibility:hidden;
+    }
+    body, html {
+    height: 100%;
+    text-align: center;
+  }
+
+  body {
+  /* background-color: #242F3F; */
+  }
+
+  .loader {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid #Fff;
+  top: 50%;
+  animation: loader 2s infinite ease;
+  }
+
+  .loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+  }
+
+  @keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+  }
+
+  @keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+  }
+</style>
+
+<div id = "load"><span class="loader"><span class="loader-inner"></span></span></div>
+<br>
+<br>
+<br>
+<div class="container-fluid">
+<div class="row1">
+<div class="">
+
+<div class="panel-body">
+<h2 class="place">Company: {{ company.name }}</h2>
+<h2 class="pla">Industry: {{ company.industry }}</h2>
+            <h3>POC: {{ company.poc }}</h3>
+            {% if user.is_authenticated %}
+            <input onclick = "location.href='{% url 'room:company-update' pk=company.pk %}'" type="button" class="btn btn-warning" value="Update">
+            {% endif %}
+</div>
+
+</div>
+    </div>
+  </div>
+<br>
+  <div class="jumbotron .col-sm-3">
+    <h2 class = "pla">Barak</h2>
+    <input onclick="location.href='{% url 'room:roomlist' pk=company.pk %}'" type="button" class="btn btn-success" value="Company Room List">
+    {% if user.is_authenticated %}
+    <input onclick="location.href='{% url 'room:roomadd' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
+    <input onclick="location.href='{% url 'room:room_remove' pk=company.pk %}'" type="button" class="btn btn-danger" value="Delete Room">
+    {% endif %}
+  </div>
+
+  <div class="jumbotron .col-sm-3">
+    <h2 class = "pla">Umiam</h2>
+    <input onclick="location.href='{% url 'room:roomlist1' pk=company.pk %}'" type="button" class="btn btn-success" value="Company Room List">
+    {% if user.is_authenticated %}
+    <input onclick="location.href='{% url 'room:roomadd1' pk=company.pk %}'" type="button" class="btn btn-primary" value="Add Room">
+    <input onclick="location.href='{% url 'room:room_remove1' pk=company.pk %}'" type="button" class="btn btn-danger" value="Delete Room">
+    {% endif %}
+  </div>
+  <script>
+    $('input').click(function(){
+      $('#load').css("visibility","visible");
+    });
+    window.addEventListener( "pageshow", function ( event )
+    {
+      var historyTraversal = event.persisted || (typeof window.performance != "undefined" && window.performance.navigation.type === 2);
+      if( historyTraversal )
+      {
+        window.location.reload();
+      }
+    });
+  </script>
+
+  {% endblock %}
